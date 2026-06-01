@@ -1,0 +1,8 @@
+# 默认忽略 D:\javajdk\dkd\ 下所有顶层文件和文件夹
+/*
+
+# 只允许跟踪以下两个项目目录和必要的根文件
+!/car/
+!/car-admin/
+!/README.md
+!/.gitignore

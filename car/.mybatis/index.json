@@ -1,0 +1,28 @@
+{
+  "version": "1.0",
+  "timestamp": 1780284743557,
+  "projectRoot": "d:\\javajdk\\dkd\\car",
+  "entries": [
+    {
+      "path": "target\\classes\\com\\example\\car\\config\\SecurityConfig.class",
+      "mtime": 1775615338649.211,
+      "size": 12169
+    },
+    {
+      "path": "target\\classes\\com\\example\\car\\config\\WebSocketConfig.class",
+      "mtime": 1775712001170.7756,
+      "size": 797
+    },
+    {
+      "path": "target\\classes\\com\\example\\car\\config\\MybatisPlusConfig.class",
+      "mtime": 1776080228526.0483,
+      "size": 1283,
+      "mapperScan": {
+        "basePackages": [
+          "com.example.car.mapper"
+        ],
+        "sourceFile": "d:\\javajdk\\dkd\\car\\target\\classes\\com\\example\\car\\config\\MybatisPlusConfig.class"
+      }
+    }
+  ]
+}

@@ -1,0 +1,30 @@
+# Test profile configuration
+# Overrides production values so tests can run without real MySQL / Redis.
+# Replace H2 URL / credentials as needed for your CI environment.
+
+spring:
+  datasource:
+    # Use H2 in-memory database for tests (no MySQL required)
+    driver-class-name: org.h2.Driver
+    url: jdbc:h2:mem:testdb;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE;MODE=MySQL
+    username: sa
+    password:
+
+  data:
+    redis:
+      # Point to a local Redis if available, or use an embedded mock
+      host: ${REDIS_HOST:127.0.0.1}
+      port: ${REDIS_PORT:6379}
+      password: ${REDIS_PASSWORD:}
+
+  # Disable Flyway / Liquibase migrations if present
+  flyway:
+    enabled: false
+
+mybatis-plus:
+  configuration:
+    log-impl: org.apache.ibatis.logging.nologging.NoLoggingImpl
+
+logging:
+  level:
+    com.example.car: warn

@@ -1,0 +1,101 @@
+server:
+  port: 8080
+  servlet:
+    context-path: /
+
+spring:
+  application:
+    name: vehicle-gps-system
+
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: Asia/Shanghai
+    serialization:
+      write-dates-as-timestamps: false
+    deserialization:
+      fail-on-unknown-properties: false
+
+  # ==========================================================================
+  # 数据源配置
+  # 所有敏感值仅提供占位符默认值；真实值必须通过以下两种方式之一注入：
+  #   1) 环境变量 DB_URL / DB_USERNAME / DB_PASSWORD
+  #   2) 在项目根目录创建 application-local.yml（已在 .gitignore 中）
+  # 参见 application-local.yml.example 获取本地开发模板
+  # ==========================================================================
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: ${DB_URL:jdbc:mysql://localhost:3306/vehicle_gps?useUnicode=true&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai&useSSL=false&connectionCollation=utf8mb4_unicode_ci}
+    username: ${DB_USERNAME:root}
+    password: ${DB_PASSWORD:CHANGE_ME_DB_PASSWORD}
+    hikari:
+      maximum-pool-size: 20
+      minimum-idle: 5
+      connection-timeout: 30000
+      idle-timeout: 600000
+      max-lifetime: 1800000
+
+  # ==========================================================================
+  # Redis 配置
+  # 同样仅提供安全占位符；真实值通过环境变量或 application-local.yml 注入
+  # ==========================================================================
+  data:
+    redis:
+      host: ${REDIS_HOST:localhost}
+      port: ${REDIS_PORT:6379}
+      database: 0
+      password: ${REDIS_PASSWORD:}
+      timeout: 3000ms
+      lettuce:
+        pool:
+          max-active: 8
+          max-idle: 8
+          min-idle: 0
+          max-wait: -1ms
+
+mybatis-plus:
+  mapper-locations: classpath*:/mapper/**/*.xml
+  type-aliases-package: com.example.car.entity
+  global-config:
+    db-config:
+      id-type: auto
+  configuration:
+    map-underscore-to-camel-case: true
+    cache-enabled: false
+    # 生产环境关闭 SQL 打印（防止 SQL 和参数进日志），本地调试可设为 stdout
+    log-impl: ${MYBATIS_LOG_IMPL:org.apache.ibatis.logging.nologging.NoLoggingImpl}
+
+# ============================================================================
+# JWT 配置
+# secret 必须通过环境变量 JWT_SECRET 注入；占位符仅用于让应用能启动报错提示
+# 推荐使用 base64 编码的 32 字节随机字符串，例如：
+#   openssl rand -base64 32
+# ============================================================================
+jwt:
+  secret: ${JWT_SECRET:CHANGE_ME_JWT_SECRET_USE_BASE64_ENCODED_32_BYTE_RANDOM_STRING}
+  expiration: ${JWT_EXPIRATION:86400000}
+  header: Authorization
+  prefix: Bearer
+
+# 生产环境应设 SPRINGDOC_ENABLED=false 关闭 Swagger
+springdoc:
+  api-docs:
+    enabled: ${SPRINGDOC_ENABLED:true}
+    path: /v3/api-docs
+  swagger-ui:
+    enabled: ${SPRINGDOC_ENABLED:true}
+    path: /swagger-ui.html
+
+# ============================================================================
+# 高德地图 Web 服务 Key
+# 请到 https://console.amap.com/dev/key/app 申请属于您自己的 Key
+# 通过环境变量 AMAP_KEY 注入，或在 application-local.yml 中覆盖
+# ============================================================================
+amap:
+  web-service-key: ${AMAP_KEY:CHANGE_ME_AMAP_KEY}
+  geocoding-url: https://restapi.amap.com/v3/geocode/regeo
+
+logging:
+  level:
+    com.example.car: ${LOG_LEVEL:info}
+  pattern:
+    console: "%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{50} - %msg%n"

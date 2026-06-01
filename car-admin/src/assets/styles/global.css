@@ -1,0 +1,534 @@
+/* ═══════════════════════════════════════════════════════════════
+   智慧车辆管理平台 · Design System v3
+   Aesthetic: Precision Navy — 精工海军蓝
+   Font: DM Sans (display) + Noto Sans SC (body)
+   ═══════════════════════════════════════════════════════════════ */
+
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800&family=Noto+Sans+SC:wght@300;400;500;700&display=swap');
+
+:root {
+  /* ── Primary palette: Vivid Indigo-Blue ── */
+  --navy-950:   #0f172a;
+  --navy-900:   #1e293b;
+  --navy-800:   #1d4ed8;
+  --navy-700:   #2563eb;
+  --navy-600:   #3b82f6;
+  --navy-500:   #60a5fa;
+  --navy-400:   #93c5fd;
+  --navy-300:   #bfdbfe;
+  --navy-200:   #dbeafe;
+  --navy-100:   #eff6ff;
+  --navy-50:    #f8fbff;
+
+  /* ── Accent: vivid blue ── */
+  --accent:        #2563eb;
+  --accent-hover:  #1d4ed8;
+  --accent-light:  #eff6ff;
+  --accent-muted:  rgba(37,99,235,.09);
+
+  /* ── Surfaces ── */
+  --bg-base:     #f1f5f9;
+  --bg-surface:  #ffffff;
+  --bg-elevated: #f8fafc;
+  --bg-sunken:   #e8edf4;
+
+  /* ── Sidebar (dark slate) ── */
+  --sidebar-bg:         #0f172a;
+  --sidebar-surface:    #1e293b;
+  --sidebar-border:     rgba(255,255,255,.07);
+  --sidebar-text:       #64748b;
+  --sidebar-text-hover: #cbd5e1;
+  --sidebar-active-fg:  #ffffff;
+  --sidebar-active-bg:  rgba(59,130,246,.22);
+  --sidebar-hover-bg:   rgba(255,255,255,.05);
+  --sidebar-width:      232px;
+
+  /* ── Header ── */
+  --header-height:  56px;
+  --header-bg:      #ffffff;
+  --header-border:  #e2e8f0;
+
+  /* ── Text ── */
+  --text-primary:   #0f172a;
+  --text-secondary: #334155;
+  --text-tertiary:  #94a3b8;
+  --text-disabled:  #cbd5e1;
+
+  /* ── Border ── */
+  --border:       #e2e8f0;
+  --border-light: #f1f5f9;
+  --border-strong:#94a3b8;
+
+  /* ── Status — vivid, high-contrast ── */
+  /* Green: 深绿文字 on 亮绿背景 */
+  --green:      #059669;
+  --green-dark: #065f46;
+  --green-bg:   #d1fae5;
+  /* Amber: 深橙文字 on 亮黄背景 */
+  --amber:      #d97706;
+  --amber-dark: #92400e;
+  --amber-bg:   #fef3c7;
+  /* Red: 深红文字 on 亮红背景 */
+  --red:        #dc2626;
+  --red-dark:   #7f1d1d;
+  --red-bg:     #fee2e2;
+  /* Blue: 深蓝文字 on 亮蓝背景 */
+  --blue:       #2563eb;
+  --blue-dark:  #1e3a8a;
+  --blue-bg:    #dbeafe;
+  /* Purple: 深紫文字 on 亮紫背景 */
+  --purple:     #7c3aed;
+  --purple-bg:  #ede9fe;
+  /* Teal */
+  --teal:       #0891b2;
+  --teal-bg:    #cffafe;
+  /* Gray */
+  --gray:       #475569;
+  --gray-bg:    #f1f5f9;
+
+  /* ── Radius ── */
+  --r-xs:  3px;
+  --r-sm:  6px;
+  --r:     8px;
+  --r-md:  10px;
+  --r-lg:  12px;
+  --r-xl:  16px;
+  --r-2xl: 20px;
+
+  /* ── Shadow ── */
+  --sh-xs: 0 1px 2px rgba(13,21,38,.05);
+  --sh-sm: 0 1px 4px rgba(13,21,38,.07), 0 1px 2px rgba(13,21,38,.04);
+  --sh-md: 0 4px 12px rgba(13,21,38,.08), 0 2px 4px rgba(13,21,38,.04);
+  --sh-lg: 0 12px 28px rgba(13,21,38,.1), 0 4px 8px rgba(13,21,38,.05);
+  --sh-xl: 0 24px 48px rgba(13,21,38,.12), 0 8px 16px rgba(13,21,38,.06);
+  --sh-gold: 0 4px 16px rgba(201,151,58,.25);
+
+  /* ── Motion ── */
+  --ease:        cubic-bezier(.4,0,.2,1);
+  --ease-out:    cubic-bezier(0,0,.2,1);
+  --ease-spring: cubic-bezier(.34,1.56,.64,1);
+  --dur-fast:    120ms;
+  --dur:         200ms;
+  --dur-slow:    300ms;
+}
+
+/* ── Reset ── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html, body, #app {
+  height: 100%;
+  font-family: 'DM Sans', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+  font-size: 14px;
+  color: var(--text-primary);
+  background: var(--bg-base);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+/* ── Scrollbar ── */
+::-webkit-scrollbar { width: 4px; height: 4px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: #d4d0c8; border-radius: 99px; }
+::-webkit-scrollbar-thumb:hover { background: #a8a49c; }
+
+/* ══════════════════════════════════════════════════════════════
+   Element Plus — 精细覆盖
+   ══════════════════════════════════════════════════════════════ */
+
+/* ── Button ── */
+.el-button {
+  border-radius: var(--r-sm) !important;
+  font-family: inherit !important;
+  font-weight: 500 !important;
+  font-size: 13px !important;
+  letter-spacing: .01em;
+  height: 34px !important;
+  padding: 0 14px !important;
+  transition: background var(--dur) var(--ease),
+              border-color var(--dur) var(--ease),
+              box-shadow var(--dur) var(--ease),
+              transform var(--dur-fast) var(--ease) !important;
+}
+.el-button:active { transform: scale(.97) !important; }
+
+/* Primary — vivid blue, white text */
+.el-button--primary:not(.is-text):not(.is-link) {
+  background: var(--accent) !important;
+  border-color: var(--accent) !important;
+  color: #ffffff !important;
+  font-weight: 600 !important;
+  box-shadow: 0 1px 4px rgba(37,99,235,.3) !important;
+}
+.el-button--primary:not(.is-text):not(.is-link):hover {
+  background: var(--accent-hover) !important;
+  border-color: var(--accent-hover) !important;
+  box-shadow: 0 4px 14px rgba(37,99,235,.4), 0 0 0 3px rgba(37,99,235,.12) !important;
+  transform: translateY(-1px) !important;
+}
+.el-button--primary:not(.is-text):not(.is-link):active {
+  transform: scale(.97) translateY(0) !important;
+}
+
+/* Default */
+.el-button--default {
+  background: #ffffff !important;
+  border-color: var(--border) !important;
+  color: var(--text-secondary) !important;
+}
+.el-button--default:hover {
+  background: var(--navy-100) !important;
+  border-color: var(--accent) !important;
+  color: var(--accent) !important;
+}
+
+/* Danger — 仅非 text 按钮才用实色红底白字 */
+.el-button--danger:not(.is-text):not(.is-link) {
+  background: var(--red) !important;
+  border-color: var(--red) !important;
+  color: #ffffff !important;
+}
+.el-button--danger:not(.is-text):not(.is-link):hover {
+  background: var(--red-dark) !important;
+  border-color: var(--red-dark) !important;
+  box-shadow: 0 4px 12px rgba(220,38,38,.3) !important;
+}
+
+/* ── Text 按钮：透明背景 + 彩色文字，始终可见 ── */
+.el-button.is-text {
+  height: 30px !important;
+  padding: 0 10px !important;
+  font-size: 13px !important;
+  font-weight: 600 !important;
+  border-radius: var(--r-sm) !important;
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  transform: none !important;
+}
+/* text primary: 蓝色文字，hover 浅蓝背景 */
+.el-button.is-text.el-button--primary {
+  color: var(--accent) !important;
+}
+.el-button.is-text.el-button--primary:hover {
+  background: var(--navy-100) !important;
+  color: var(--accent-hover) !important;
+  transform: none !important;
+  box-shadow: none !important;
+}
+/* text danger: 红色文字，hover 浅红背景 */
+.el-button.is-text.el-button--danger {
+  color: var(--red) !important;
+}
+.el-button.is-text.el-button--danger:hover {
+  background: var(--red-bg) !important;
+  color: var(--red-dark) !important;
+  transform: none !important;
+  box-shadow: none !important;
+}
+.el-button.is-text:active { transform: scale(.97) !important; }
+
+/* ── Input ── */
+.el-input__wrapper {
+  border-radius: var(--r-sm) !important;
+  box-shadow: 0 0 0 1px var(--border) !important;
+  background: #fff !important;
+  transition: box-shadow var(--dur) var(--ease) !important;
+  height: 34px !important;
+}
+.el-input__wrapper:hover { box-shadow: 0 0 0 1.5px var(--navy-400) !important; }
+.el-input__wrapper.is-focus {
+  box-shadow: 0 0 0 2px var(--accent), 0 0 0 4px rgba(37,99,235,.15) !important;
+}
+.el-input__inner {
+  font-family: inherit !important;
+  font-size: 13px !important;
+  color: var(--text-primary) !important;
+}
+.el-input__inner::placeholder { color: var(--text-disabled) !important; }
+
+/* ── Select ── */
+.el-select .el-input__wrapper { border-radius: var(--r-sm) !important; }
+.el-select-dropdown {
+  border-radius: var(--r-md) !important;
+  box-shadow: var(--sh-lg) !important;
+  border: 1px solid var(--border) !important;
+  overflow: hidden;
+}
+.el-select-dropdown__item {
+  font-size: 13px !important;
+  padding: 8px 12px !important;
+  border-radius: var(--r-sm) !important;
+  margin: 2px 4px !important;
+}
+.el-select-dropdown__item.is-selected {
+  color: #ffffff !important;
+  background: var(--accent) !important;
+  font-weight: 600 !important;
+}
+.el-select-dropdown__item:hover { background: var(--navy-100) !important; color: var(--accent) !important; }
+
+/* ── Table ── */
+.el-table {
+  border-radius: var(--r-lg) !important;
+  overflow: hidden;
+  border: 1px solid var(--border) !important;
+  font-family: inherit !important;
+}
+.el-table::before { display: none !important; }
+.el-table th.el-table__cell {
+  background: var(--bg-elevated) !important;
+  color: var(--text-tertiary) !important;
+  font-weight: 600 !important;
+  font-size: 11px !important;
+  letter-spacing: .07em !important;
+  text-transform: uppercase !important;
+  border-bottom: 1px solid var(--border) !important;
+  padding: 9px 14px !important;
+}
+.el-table td.el-table__cell {
+  color: var(--text-primary) !important;
+  border-bottom: 1px solid var(--border-light) !important;
+  padding: 11px 14px !important;
+  font-size: 13px !important;
+  transition: background var(--dur-fast) var(--ease);
+}
+.el-table--striped .el-table__body tr.el-table__row--striped td.el-table__cell {
+  background: #fafaf8 !important;
+}
+.el-table__body tr:hover > td.el-table__cell { background: #eff6ff !important; }
+
+/* ── Pagination ── */
+.el-pagination { --el-pagination-font-size: 12.5px; }
+.el-pagination .el-pager li {
+  border-radius: var(--r-sm) !important;
+  font-weight: 500;
+  min-width: 30px !important;
+  height: 30px !important;
+  line-height: 30px !important;
+  transition: all var(--dur) var(--ease);
+}
+.el-pagination .el-pager li.is-active {
+  background: var(--accent) !important;
+  color: #ffffff !important;
+  font-weight: 700 !important;
+  box-shadow: 0 2px 8px rgba(37,99,235,.4);
+}
+.el-pagination .el-pager li:hover:not(.is-active) {
+  background: var(--navy-100) !important;
+  color: var(--accent) !important;
+}
+.el-pagination .btn-prev,
+.el-pagination .btn-next {
+  border-radius: var(--r-sm) !important;
+  transition: all var(--dur) var(--ease) !important;
+}
+.el-pagination .btn-prev:hover,
+.el-pagination .btn-next:hover {
+  background: var(--navy-100) !important;
+  color: var(--accent) !important;
+}
+
+/* ── Tag — 高对比度，深色文字在亮色背景，或白色文字在实色背景 ── */
+.el-tag {
+  border-radius: var(--r-xs) !important;
+  font-weight: 700 !important;
+  font-size: 11px !important;
+  letter-spacing: .03em;
+  border: none !important;
+  padding: 2px 8px !important;
+  height: auto !important;
+  line-height: 1.7 !important;
+}
+/* success: 白字 深绿背景 */
+.el-tag--success { background: var(--green) !important; color: #ffffff !important; }
+/* warning: 白字 深橙背景 */
+.el-tag--warning { background: var(--amber) !important; color: #ffffff !important; }
+/* danger: 白字 红色背景 */
+.el-tag--danger  { background: var(--red)   !important; color: #ffffff !important; }
+/* info: 深灰字 浅灰背景 */
+.el-tag--info    { background: #e2e8f0     !important; color: #334155 !important; }
+/* primary: 白字 蓝色背景 */
+.el-tag--primary { background: var(--accent) !important; color: #ffffff !important; }
+
+/* ── Dialog ── */
+.el-dialog {
+  border-radius: var(--r-xl) !important;
+  overflow: hidden;
+  box-shadow: var(--sh-xl) !important;
+  border: 1px solid var(--border) !important;
+}
+.el-dialog__header {
+  padding: 20px 24px 16px !important;
+  border-bottom: 1px solid var(--border-light) !important;
+  background: var(--bg-elevated) !important;
+  margin: 0 !important;
+}
+.el-dialog__title {
+  font-size: 15px !important;
+  font-weight: 700 !important;
+  color: var(--text-primary) !important;
+  letter-spacing: -.01em !important;
+  font-family: 'DM Sans', sans-serif !important;
+}
+.el-dialog__body { padding: 20px 24px !important; }
+.el-dialog__footer {
+  padding: 14px 24px 20px !important;
+  border-top: 1px solid var(--border-light) !important;
+  background: var(--bg-elevated) !important;
+}
+.el-dialog__headerbtn { top: 18px !important; right: 20px !important; }
+.el-dialog__headerbtn .el-dialog__close {
+  color: var(--text-tertiary) !important;
+  font-size: 16px !important;
+}
+.el-dialog__headerbtn:hover .el-dialog__close { color: var(--text-primary) !important; }
+
+/* ── Form ── */
+.el-form-item { margin-bottom: 16px !important; }
+.el-form-item__label {
+  font-size: 12px !important;
+  font-weight: 600 !important;
+  color: var(--text-secondary) !important;
+  letter-spacing: .03em !important;
+  padding-bottom: 4px !important;
+}
+.el-form-item__error {
+  font-size: 11.5px !important;
+  color: var(--red) !important;
+  padding-top: 3px !important;
+}
+
+/* ── Dropdown ── */
+.el-dropdown-menu {
+  border-radius: var(--r-md) !important;
+  box-shadow: var(--sh-lg) !important;
+  border: 1px solid var(--border) !important;
+  padding: 4px !important;
+  min-width: 140px !important;
+}
+.el-dropdown-menu__item {
+  border-radius: var(--r-sm) !important;
+  font-size: 13px !important;
+  padding: 8px 12px !important;
+  color: var(--text-secondary) !important;
+  gap: 8px;
+  transition: background var(--dur-fast) var(--ease) !important;
+}
+.el-dropdown-menu__item:hover {
+  background: var(--navy-50) !important;
+  color: var(--navy-600) !important;
+}
+.el-dropdown-menu__item.is-divided {
+  border-top: 1px solid var(--border-light) !important;
+  margin-top: 4px !important;
+  padding-top: 8px !important;
+}
+
+/* ── Message ── */
+.el-message {
+  border-radius: var(--r-md) !important;
+  box-shadow: var(--sh-lg) !important;
+  border: 1px solid var(--border) !important;
+  font-size: 13px !important;
+  padding: 10px 16px !important;
+  min-width: 200px !important;
+}
+
+/* ── Switch ── */
+.el-switch.is-checked .el-switch__core {
+  background: var(--accent) !important;
+  border-color: var(--accent) !important;
+}
+
+/* ── Steps ── */
+.el-step__title { font-size: 12.5px !important; font-weight: 600 !important; }
+.el-step__description { font-size: 11px !important; color: var(--text-tertiary) !important; }
+.el-step__head.is-finish .el-step__icon { color: var(--accent) !important; border-color: var(--accent) !important; }
+.el-step__head.is-process .el-step__icon {
+  background: var(--accent) !important;
+  border-color: var(--accent) !important;
+  color: #ffffff !important;
+}
+
+/* ── Date picker ── */
+.el-date-editor .el-input__wrapper { height: 34px !important; }
+
+/* ── Radio ── */
+.el-radio__input.is-checked .el-radio__inner {
+  background: var(--accent) !important;
+  border-color: var(--accent) !important;
+}
+.el-radio__label { font-size: 13px !important; }
+
+/* ── Descriptions ── */
+.el-descriptions__label {
+  font-size: 12px !important;
+  font-weight: 600 !important;
+  color: var(--text-tertiary) !important;
+  background: var(--bg-elevated) !important;
+}
+.el-descriptions__content { font-size: 13px !important; }
+
+/* ══════════════════════════════════════════════════════════════
+   Layout Utilities
+   ══════════════════════════════════════════════════════════════ */
+
+.page-wrap { display: flex; flex-direction: column; gap: 16px; }
+
+/* Page header */
+.page-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 4px;
+}
+.page-title {
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--text-primary);
+  letter-spacing: -.02em;
+  font-family: 'DM Sans', sans-serif;
+}
+
+/* Cards */
+.page-card {
+  background: var(--bg-surface);
+  border-radius: var(--r-lg);
+  border: 1px solid var(--border);
+  padding: 20px;
+  box-shadow: var(--sh-xs);
+}
+
+/* Search bar */
+.search-bar {
+  background: var(--bg-surface);
+  border-radius: var(--r-lg);
+  border: 1px solid var(--border);
+  padding: 12px 16px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+  box-shadow: var(--sh-xs);
+}
+
+/* Pagination */
+.pagination {
+  margin-top: 14px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+/* Route transition */
+.fade-enter-active {
+  transition: opacity var(--dur-slow) var(--ease-out),
+              transform var(--dur-slow) var(--ease-out);
+}
+.fade-leave-active {
+  transition: opacity var(--dur-fast) var(--ease),
+              transform var(--dur-fast) var(--ease);
+}
+.fade-enter-from { opacity: 0; transform: translateY(6px) scale(.995); }
+.fade-leave-to   { opacity: 0; transform: translateY(-3px); }
